@@ -31,7 +31,7 @@ function TotalPrice({
       const decreaseAmount = priceWithoutCoupon * discountSize;
       newTotalPrice = priceWithoutCoupon - decreaseAmount;
     }
-    setTotalPrice(newTotalPrice ? newTotalPrice : priceWithoutCoupon);
+    setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);
   }, [cartProducts, couponCode]);
 
   return (
