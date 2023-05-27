@@ -8,6 +8,8 @@ type Context = {
   setShopId: (shopId: number) => void;
   cartProducts: ProductCartItem[];
   setCartProducts: (cartProducts: ProductCartItem[]) => void;
+  couponCode: string;
+  setCouponCode: (couponCode: string) => void;
 };
 
 type ShopProviderProps = {
@@ -15,10 +17,12 @@ type ShopProviderProps = {
 };
 
 const ShopContext = createContext<Context>({
-  shopId: JSON.parse(localStorage.getItem('shopId') || '0'),
+  shopId: 0,
   setShopId: () => '',
   cartProducts: [],
   setCartProducts: () => '',
+  couponCode: '',
+  setCouponCode: () => '',
 });
 
 export const useShop = () => useContext(ShopContext);
@@ -26,9 +30,12 @@ export const useShop = () => useContext(ShopContext);
 function ShopProvider({ children }: ShopProviderProps) {
   const [shopId, setShopId] = useState<number>(JSON.parse(localStorage.getItem('shopId') || '0'));
   const [cartProducts, setCartProducts] = useState<ProductCartItem[]>(ProductService.getProducts());
+  const [couponCode, setCouponCode] = useState<string>('');
 
   return (
-    <ShopContext.Provider value={{ shopId, setShopId, cartProducts, setCartProducts }}>
+    <ShopContext.Provider
+      value={{ shopId, setShopId, cartProducts, setCartProducts, couponCode, setCouponCode }}
+    >
       {children}
     </ShopContext.Provider>
   );

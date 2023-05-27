@@ -11,7 +11,7 @@ export const ShopService = {
     return data;
   },
   async getProducts(shopId: number) {
-    if (!shopId) return null;
+    if (!shopId) return [];
     const { data } = await api.get<Product[]>(`/products/${shopId}`);
     return data;
   },

@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 
 import { useShop } from '../context/shop-context';
+import { ProductService } from '../services/product-service';
 import { ShopService } from '../services/shop-service';
 import { Order } from '../types/order.types';
 import TotalPrice from './total-price';
@@ -18,7 +19,7 @@ function UserForm() {
     mode: 'onChange',
   });
 
-  const { cartProducts, shopId } = useShop();
+  const { cartProducts, shopId, setShopId, setCouponCode, couponCode } = useShop();
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const { mutateAsync } = useMutation({
     mutationFn: (order: Order) => ShopService.postOrder(order),
@@ -30,6 +31,10 @@ function UserForm() {
     order.totalPrice = String(totalPrice);
     await mutateAsync(order);
     reset();
+    setCouponCode('');
+    ProductService.removeAllProducts();
+    setShopId(0);
+    alert('Your order has been sent!');
   };
 
   return (
@@ -112,6 +117,8 @@ function UserForm() {
         cartProducts={cartProducts}
         totalPrice={totalPrice}
         setTotalPrice={setTotalPrice}
+        couponCode={couponCode}
+        setCouponCode={setCouponCode}
       />
     </form>
   );

@@ -31,7 +31,7 @@ function Shops() {
   return (
     <div
       className="d-flex flex-column align-items-center border border-4 rounded m-1"
-      style={{ width: '350px', height: '610px' }}
+      style={{ width: '350px', height: '590px' }}
     >
       <p className="mt-4 fw-bolder fs-5">Shops:</p>
       {isLoading && (

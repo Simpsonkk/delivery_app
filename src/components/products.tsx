@@ -17,18 +17,19 @@ type ProductsProps = {
 function Products({ shoppingCart }: ProductsProps) {
   const { shopId, setCartProducts } = useShop();
   const [products, setProducts] = useState<Product[]>([]);
+
   const { isSuccess, isLoading } = useQuery({
     queryKey: ['products', shopId],
     queryFn: () => ShopService.getProducts(shopId),
     select: (data) =>
-      shoppingCart && data
+      shoppingCart
         ? data.filter((product) =>
             ProductService.getProducts().some(
               (item: ProductCartItem) => item.id === product.productId
             )
           )
         : data,
-    onSuccess: (data) => data && setProducts(data),
+    onSuccess: (data) => setProducts(data),
   });
 
   const addNewProduct = (productId: number, price: number) => {
@@ -43,15 +44,16 @@ function Products({ shoppingCart }: ProductsProps) {
 
   const previewImg =
     'https://images.unsplash.com/photo-1486485764572-92b96f21882a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80';
+
   return (
     <ul
       className={`d-flex flex-wrap ${
         shoppingCart && 'w-50'
       } m-1 p-3 gap-2 column-gap-3 overflow-y-auto border border-4 ms-3 rounded bg-warning-subtle`}
-      style={{ width: '1010px', height: `${shoppingCart ? '495px' : '610px'}` }}
+      style={{ width: '1010px', height: `${shoppingCart ? '545px' : '590px'}` }}
     >
-      {!products.length && <img className="w-100 h-100" src={previewImg} alt="preview img" />}
       {isLoading && <Loader />}
+      {!shopId && <img className="w-100 h-100" src={previewImg} alt="preview img" />}
       {isSuccess &&
         products.map((product) => (
           <ProductCard
