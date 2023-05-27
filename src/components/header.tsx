@@ -4,9 +4,9 @@ import { AppRoute } from '../enums';
 
 function Header() {
   const location = useLocation();
-  console.log('location', location);
+
   return (
-    <header className="ps-4 bg-warning-subtle">
+    <header className="ps-4 pb-3 bg-warning-subtle">
       <ul className="nav nav-underline">
         {Object.keys(AppRoute).map((pageName) => (
           <li key={pageName} className="nav-item">

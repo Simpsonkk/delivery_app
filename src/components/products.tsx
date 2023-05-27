@@ -32,8 +32,8 @@ function Products({ shoppingCart }: ProductsProps) {
     onSuccess: (data) => setProducts(data),
   });
 
-  const addNewProduct = (productId: number, price: number) => {
-    ProductService.addNewProduct(productId, price);
+  const addNewProduct = (productId: number, price: number, name: string) => {
+    ProductService.addNewProduct(productId, price, name);
     setCartProducts(ProductService.getProducts());
   };
   const removeProductByType = (productId: number) => {
@@ -50,7 +50,7 @@ function Products({ shoppingCart }: ProductsProps) {
       className={`d-flex flex-wrap ${
         shoppingCart && 'w-50'
       } m-1 p-3 gap-2 column-gap-3 overflow-y-auto border border-4 ms-3 rounded bg-warning-subtle`}
-      style={{ width: '1010px', height: `${shoppingCart ? '545px' : '590px'}` }}
+      style={{ width: '1010px', height: `${shoppingCart ? '545px' : '560px'}` }}
     >
       {isLoading && <Loader />}
       {!shopId && <img className="w-100 h-100" src={previewImg} alt="preview img" />}

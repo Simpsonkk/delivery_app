@@ -29,17 +29,20 @@ function UserForm() {
     order.shopId = shopId;
     order.productsIdsAndQuantity = cartProducts;
     order.totalPrice = String(totalPrice);
-    await mutateAsync(order);
+    await mutateAsync(order); 
+    // console.log('order', order);
+       
     reset();
     setCouponCode('');
     ProductService.removeAllProducts();
     setShopId(0);
+    setTotalPrice(0)
     alert('Your order has been sent!');
   };
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}>
-      <div className="border border-4 rounded m-1 p-5 bg-warning-subtle" style={{ width: '600px' }}>
+      <div className="border border-4 rounded m-1 p-4 bg-warning-subtle " style={{ width: '600px' }}>
         <div className="form-floating mb-3">
           <input
             {...register('name', {

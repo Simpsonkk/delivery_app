@@ -10,7 +10,7 @@ function Coupons() {
   return (
     <ul
       className="d-flex flex-wrap justify-content-around p-3 gap-2 column-gap-3 overflow-y-auto border border-4 rounded bg-warning-subtle"
-      style={{ height: '610px' }}
+      style={{ height: '600px' }}
     >
       {Object.entries(Discounts).map(([discount, code]) => (
         <li

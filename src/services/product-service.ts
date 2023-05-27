@@ -13,11 +13,11 @@ export const ProductService = {
     const product = products.find((product: ProductCartItem) => product.id === id);
     return product ? product.quantity : 1;
   },
-  addNewProduct(id: number, price: number) {
+  addNewProduct(id: number, price: number, name: string) {
     const products = this.getProducts();
     const product = products.find((product: ProductCartItem) => product.id === id);
     if (product) return;
-    products.push({ id, quantity: 1, price });
+    products.push({ id, quantity: 1, price, name });
     localStorage.setItem('products', JSON.stringify(products));
   },
   addProduct(id: number, quantity: number) {

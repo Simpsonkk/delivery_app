@@ -1,4 +1,5 @@
 import { Order } from '../types/order.types';
+import { ProductCartItem } from '../types/product-cart.types';
 import { Product } from '../types/product.types';
 import { Shop } from '../types/shop.types';
 import { createAPI } from './api';
@@ -16,7 +17,11 @@ export const ShopService = {
     return data;
   },
   async postOrder(order: Order) {
-    const { data } = await api.post<[]>('/orders', order);
+    const { data } = await api.post('/orders', order);
+    return data;
+  },
+  async getOrders(email: string) {
+    const { data } = await api.get<Order[]>(`/orders/${email}`);
     return data;
   },
 };

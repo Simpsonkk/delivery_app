@@ -6,7 +6,7 @@ import { Product } from '../types/product.types';
 
 type ProductCartProps = {
   product: Product;
-  addNewProduct: (productId: number, price: number) => void;
+  addNewProduct: (productId: number, price: number, name: string) => void;
   removeProductByType: (productId: number) => void;
   shoppingCart?: boolean;
 };
@@ -60,7 +60,7 @@ function ProductCart({
           />
         ) : (
           <button
-            onClick={() => addNewProduct(product.productId, product.price)}
+            onClick={() => addNewProduct(product.productId, product.price, product.name)}
             className={`btn ${
               isProductInCart ? 'bg-secondary-subtle' : 'bg-secondary text-white'
             } mb-1`}

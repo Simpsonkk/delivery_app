@@ -2,6 +2,7 @@ export enum AppRoute {
   'Shops' = '/delivery_app/',
   'Shopping Cart' = '/delivery_app/shopping-cart',
   'Coupons' = '/delivery_app/coupons',
+  'History' = '/delivery_app/history',
 }
 
 export enum Discounts {

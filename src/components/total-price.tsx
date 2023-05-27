@@ -44,7 +44,7 @@ function TotalPrice({
         placeholder="Paste coupon code"
       />
       <p className="col-4 fs-6 m-0">Total price: {totalPrice} $</p>
-      <button type="submit" className="col-2 btn btn-secondary">
+      <button type="submit" className="col-2 btn btn-secondary me-4">
         Order
       </button>
     </div>
