@@ -1,4 +1,4 @@
 export enum AppRoute {
   Shops = '/',
-  ShoppingCart = '/shopping-card',
+  ShoppingCart = '/shopping-cart',
 }
