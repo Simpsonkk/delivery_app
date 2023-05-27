@@ -4,6 +4,7 @@ import { AppRoute } from '../enums';
 
 function Header() {
   const location = useLocation();
+  console.log('location', location);
   return (
     <header className="ps-4 bg-warning-subtle">
       <ul className="nav nav-underline">

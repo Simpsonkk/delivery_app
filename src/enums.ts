@@ -1,5 +1,5 @@
 export enum AppRoute {
-  'Shops' = '/delivery_app',
+  'Shops' = '/delivery_app/',
   'Shopping Cart' = '/delivery_app/shopping-cart',
   'Coupons' = '/delivery_app/coupons',
 }
