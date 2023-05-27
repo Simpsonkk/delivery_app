@@ -1,6 +1,6 @@
 export type ProductCartItem = {
   id: number;
-  name: string
+  name: string;
   quantity: number;
   price: number;
 };

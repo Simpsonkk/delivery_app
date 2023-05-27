@@ -1,5 +1,4 @@
 import { Order } from '../types/order.types';
-import { ProductCartItem } from '../types/product-cart.types';
 import { Product } from '../types/product.types';
 import { Shop } from '../types/shop.types';
 import { createAPI } from './api';
