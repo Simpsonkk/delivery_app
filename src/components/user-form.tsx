@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import usePlacesAutocomplete from 'use-places-autocomplete';
 
 import { useMutation } from '@tanstack/react-query';
 
@@ -28,9 +29,22 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
 
   const { cartProducts, shopId, setShopId, setCouponCode, couponCode } = useShop();
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [address, setAddress] = useState<string>('');
+  // const [address, setAddress] = useState<string>('');
   const { mutateAsync } = useMutation({
     mutationFn: (order: Order) => ShopService.postOrder(order),
+  });
+
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+    init,
+  } = usePlacesAutocomplete({
+    callbackName: 'YOUR_CALLBACK_NAME',
+    initOnMount: false,
+    debounce: 300,
   });
 
   const handleSubmitForm: SubmitHandler<Order> = async (order) => {
@@ -41,15 +55,18 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
     order.shopId = shopId;
     order.productsIdsAndQuantity = cartProducts;
     order.totalPrice = String(totalPrice);
-    order.address = address;
+    order.address = value;
     await mutateAsync(order);    
     reset();
     setCouponCode('');
     setTotalPrice(0);
+    setValue('')
     setShopId(0);
     ProductService.removeAllProducts();
     alert('Your order has been sent!');
   };
+
+
 
   return (
     <>
@@ -60,9 +77,15 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
         >
           <Autocomplete
             isLoaded={isLoaded}
-            register={register}
+            // register={register}
             handlePlaceSelect={handlePlaceSelect}
-            setAddress={setAddress}
+            // setAddress={setAddress}
+            ready={ready}
+            value={value}
+            suggestions={{ status, data }}
+            setValue={setValue}
+            clearSuggestions={clearSuggestions}
+            init={init}
           />
           <div className="form-floating mb-3">
             <input
