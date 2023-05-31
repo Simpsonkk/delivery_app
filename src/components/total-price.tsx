@@ -24,10 +24,6 @@ function TotalPrice({
   const handleCouponCode = (e: ChangeEvent<HTMLInputElement>) => setCouponCode(e.target.value);
 
   useEffect(() => {
-    if (typeof totalPrice === 'string') {
-      setTotalPrice(0);
-      return;
-    }    
     let newTotalPrice = 0;
     const priceWithoutCoupon = calculateTotalPrice();
     const discountSize = DiscountSizes[couponCode as keyof typeof DiscountSizes];
@@ -36,7 +32,7 @@ function TotalPrice({
       newTotalPrice = priceWithoutCoupon - decreaseAmount;
     }
     setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);
-  }, [cartProducts, couponCode, totalPrice]);
+  }, [cartProducts, couponCode]);
 
   return (
     <div className="row align-items-center mt-2">
