@@ -28,7 +28,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
   });
 
   const { cartProducts, shopId, setShopId, setCouponCode, couponCode } = useShop();
-  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number | string>(0);
   const { mutateAsync } = useMutation({
     mutationFn: (order: Order) => ShopService.postOrder(order),
   });
@@ -58,7 +58,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
     await mutateAsync(order);        
     reset();
     setCouponCode('');
-    setTotalPrice(0);
+    setTotalPrice('');
     setValue('')
     setShopId(0);
     ProductService.removeAllProducts();

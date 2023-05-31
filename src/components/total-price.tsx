@@ -4,7 +4,7 @@ import { DiscountSizes } from '../enums';
 import { ProductCartItem } from '../types/product-cart.types';
 
 type TotalPriceProps = {
-  totalPrice: number;
+  totalPrice: number | string;
   setTotalPrice: (totalPrice: number) => void;
   cartProducts: ProductCartItem[];
   couponCode: string;
@@ -24,6 +24,10 @@ function TotalPrice({
   const handleCouponCode = (e: ChangeEvent<HTMLInputElement>) => setCouponCode(e.target.value);
 
   useEffect(() => {
+    if (typeof totalPrice === 'string') {
+      setTotalPrice(0);
+      return;
+    }    
     let newTotalPrice = 0;
     const priceWithoutCoupon = calculateTotalPrice();
     const discountSize = DiscountSizes[couponCode as keyof typeof DiscountSizes];
@@ -31,7 +35,7 @@ function TotalPrice({
       const decreaseAmount = priceWithoutCoupon * discountSize;
       newTotalPrice = priceWithoutCoupon - decreaseAmount;
     }
-    setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);    
+    setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);
   }, [cartProducts, couponCode, totalPrice]);
 
   return (
