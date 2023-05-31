@@ -6,7 +6,7 @@ function Header() {
   const location = useLocation();
 
   return (
-    <header className="ps-4 pb-3 bg-warning-subtle">
+    <header className="ps-4 bg-warning-subtle">
       <ul className="nav nav-underline">
         {Object.keys(AppRoute).map((pageName) => (
           <li key={pageName} className="nav-item">

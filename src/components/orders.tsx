@@ -32,15 +32,15 @@ function Orders() {
             onChange={handleEmail}
             value={email}
             type="email"
-            className="form-control"
+            className="form-control mt-3"
             id="floatingInput"
             placeholder="Name"
           />
-          <label className="ms-2" htmlFor="floatingInput">
-            Email address
+          <label className="ms-2 mt-3" htmlFor="floatingInput">
+            Email
           </label>
         </div>
-        <button onClick={getOrders} className="btn btn-secondary btn-lg col-2" type="submit">
+        <button onClick={getOrders} className="btn btn-secondary btn-lg col-2 mt-3" type="submit">
           Send
         </button>
       </div>

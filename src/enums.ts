@@ -11,8 +11,15 @@ export enum Discounts {
   'Discount 30%' = '#123458',
 }
 
-export enum DiscountsSize {
+export enum DiscountSizes {
   '#123456' = 0.1,
   '#123457' = 0.2,
   '#123458' = 0.3,
+}
+
+export enum ShopIconsPath {
+  undefined = 0,
+  './burger-queen-icon.svg' = 1,
+  './pizza-mario.svg' = 2,
+  './awesome-sushi.svg' = 3,
 }

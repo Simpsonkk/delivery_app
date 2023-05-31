@@ -6,24 +6,19 @@ import { Product } from '../types/product.types';
 
 type ProductCartProps = {
   product: Product;
-  addNewProduct: (productId: number, price: number, name: string) => void;
+  addProduct: (productId: number, price: number, name: string) => void;
   removeProductByType: (productId: number) => void;
   shoppingCart?: boolean;
 };
 
-function ProductCart({
-  product,
-  shoppingCart,
-  addNewProduct,
-  removeProductByType,
-}: ProductCartProps) {
+function ProductCart({ product, shoppingCart, addProduct, removeProductByType }: ProductCartProps) {
   const { setCartProducts, cartProducts } = useShop();
   const [productQuantity, setProductQuantity] = useState<number>(
-    ProductService.getProduct(product.productId)
+    ProductService.getProductQuantity(product.productId)
   );
   const handleProductQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     setProductQuantity(+e.target.value);
-    ProductService.addProduct(product.productId, +e.target.value);
+    ProductService.changeProductQuantity(product.productId, +e.target.value);
   };
   const isProductInCart = !!cartProducts.find((cartProd) => cartProd.id === product.productId);
 
@@ -60,7 +55,7 @@ function ProductCart({
           />
         ) : (
           <button
-            onClick={() => addNewProduct(product.productId, product.price, product.name)}
+            onClick={() => addProduct(product.productId, product.price, product.name)}
             className={`btn ${
               isProductInCart ? 'bg-secondary-subtle' : 'bg-secondary text-white'
             } mb-1`}

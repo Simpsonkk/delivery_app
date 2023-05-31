@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect } from 'react';
 
-import { DiscountsSize } from '../enums';
+import { DiscountSizes } from '../enums';
 import { ProductCartItem } from '../types/product-cart.types';
 
 type TotalPriceProps = {
@@ -26,7 +26,7 @@ function TotalPrice({
   useEffect(() => {
     let newTotalPrice = 0;
     const priceWithoutCoupon = calculateTotalPrice();
-    const discountSize = DiscountsSize[couponCode as keyof typeof DiscountsSize];
+    const discountSize = DiscountSizes[couponCode as keyof typeof DiscountSizes];
     if (discountSize) {
       const decreaseAmount = priceWithoutCoupon * discountSize;
       newTotalPrice = priceWithoutCoupon - decreaseAmount;

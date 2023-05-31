@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
+import { previewAppImg } from '../constants';
 import { useShop } from '../context/shop-context';
 import { ProductService } from '../services/product-service';
 import { ShopService } from '../services/shop-service';
@@ -32,8 +33,8 @@ function Products({ shoppingCart }: ProductsProps) {
     onSuccess: (data) => setProducts(data),
   });
 
-  const addNewProduct = (productId: number, price: number, name: string) => {
-    ProductService.addNewProduct(productId, price, name);
+  const addProduct = (productId: number, price: number, name: string) => {
+    ProductService.addProduct(productId, price, name);
     setCartProducts(ProductService.getProducts());
   };
   const removeProductByType = (productId: number) => {
@@ -42,23 +43,20 @@ function Products({ shoppingCart }: ProductsProps) {
     setCartProducts(ProductService.getProducts());
   };
 
-  const previewImg =
-    'https://images.unsplash.com/photo-1486485764572-92b96f21882a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80';
-
   return (
     <ul
       className={`d-flex flex-wrap ${
-        shoppingCart && 'w-50'
-      } m-1 p-3 gap-2 column-gap-3 overflow-y-auto border border-4 ms-3 rounded bg-warning-subtle`}
-      style={{ width: '1010px', height: `${shoppingCart ? '545px' : '560px'}` }}
+        shoppingCart && 'w-100 ps-5 column-gap-5'
+      } m-0 p-3 ps-3 gap-2 column-gap-3 overflow-y-auto border border-4 ms-1 rounded bg-warning-subtle`}
+      style={{ width: '1010px', height: `${shoppingCart ? '335px' : '560px'}` }}
     >
       {isLoading && <Loader />}
-      {!shopId && <img className="w-100 h-100" src={previewImg} alt="preview img" />}
+      {!shopId && <img className="w-100 h-100" src={previewAppImg} alt="preview img" />}
       {isSuccess &&
         products.map((product) => (
           <ProductCard
             key={product.productId}
-            addNewProduct={addNewProduct}
+            addProduct={addProduct}
             removeProductByType={removeProductByType}
             product={product}
             shoppingCart={shoppingCart}
