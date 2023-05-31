@@ -31,8 +31,8 @@ function TotalPrice({
       const decreaseAmount = priceWithoutCoupon * discountSize;
       newTotalPrice = priceWithoutCoupon - decreaseAmount;
     }
-    setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);
-  }, [cartProducts, couponCode]);
+    setTotalPrice(newTotalPrice ? +newTotalPrice.toFixed(2) : priceWithoutCoupon);    
+  }, [cartProducts, couponCode, totalPrice]);
 
   return (
     <div className="row align-items-center mt-2">

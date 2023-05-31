@@ -55,7 +55,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
     order.productsIdsAndQuantity = cartProducts;
     order.totalPrice = String(totalPrice);
     order.address = value;
-    await mutateAsync(order);    
+    await mutateAsync(order);        
     reset();
     setCouponCode('');
     setTotalPrice(0);
