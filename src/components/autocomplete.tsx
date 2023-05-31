@@ -1,12 +1,10 @@
 import { ChangeEvent, useEffect } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
-import { UseFormRegister } from 'react-hook-form';
-import usePlacesAutocomplete, {
+import {
   ClearSuggestions, getGeocode, getLatLng, Init, SetValue, Status
 } from 'use-places-autocomplete';
 
 import { Coordinates } from '../types/coordinates.types';
-import { Order } from '../types/order.types';
 
 type AutocompleteProps = {
   isLoaded: boolean;
@@ -16,9 +14,7 @@ type AutocompleteProps = {
   setValue: SetValue;
   clearSuggestions: ClearSuggestions;
   init: Init;
-  // register: UseFormRegister<Order>;
   handlePlaceSelect: (coordinates: Coordinates) => void;
-  // setAddress: (address: string) => void;
 };
 
 function Autocomplete({
@@ -31,18 +27,6 @@ function Autocomplete({
   value,
   handlePlaceSelect,
 }: AutocompleteProps) {
-  // const {
-  //   ready,
-  //   value,
-  //   suggestions: { status, data },
-  //   setValue,
-  //   clearSuggestions,
-  //   init,
-  // } = usePlacesAutocomplete({
-  //   callbackName: 'YOUR_CALLBACK_NAME',
-  //   initOnMount: false,
-  //   debounce: 300,
-  // });
   const ref = useOnclickOutside(() => {
     clearSuggestions();
   });
@@ -86,10 +70,6 @@ function Autocomplete({
       init();
     }
   }, [isLoaded]);
-
-  // useEffect(() => {
-  //   setAddress(value);
-  // }, [setAddress, value]);
 
   return (
     <div className="form-floating mb-4" ref={ref}>

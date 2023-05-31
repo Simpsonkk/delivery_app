@@ -77,9 +77,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
         >
           <Autocomplete
             isLoaded={isLoaded}
-            // register={register}
             handlePlaceSelect={handlePlaceSelect}
-            // setAddress={setAddress}
             ready={ready}
             value={value}
             suggestions={{ status, data }}
