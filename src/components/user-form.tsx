@@ -29,7 +29,6 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
 
   const { cartProducts, shopId, setShopId, setCouponCode, couponCode } = useShop();
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  // const [address, setAddress] = useState<string>('');
   const { mutateAsync } = useMutation({
     mutationFn: (order: Order) => ShopService.postOrder(order),
   });
@@ -65,8 +64,6 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps) {
     ProductService.removeAllProducts();
     alert('Your order has been sent!');
   };
-
-
 
   return (
     <>
