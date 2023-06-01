@@ -24,6 +24,10 @@ function TotalPrice({
   const handleCouponCode = (e: ChangeEvent<HTMLInputElement>) => setCouponCode(e.target.value);
 
   useEffect(() => {
+    if (!cartProducts.length) {
+      setTotalPrice(0);
+      return;
+    }
     let newTotalPrice = 0;
     const priceWithoutCoupon = calculateTotalPrice();
     const discountSize = DiscountSizes[couponCode as keyof typeof DiscountSizes];

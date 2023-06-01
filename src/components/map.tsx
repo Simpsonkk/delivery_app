@@ -34,7 +34,7 @@ function Map({ isLoaded, coordinates }: MapProps): JSX.Element {
       options={defaultMapOptions}
     >
       <Marker position={coordinates} />
-      <Marker position={shopCoordinates[shopId]} icon={{ url: ShopIconsPath[shopId] }} />
+      {!!shopId && <Marker position={shopCoordinates[shopId]} icon={{ url: ShopIconsPath[shopId] }} />}
     </GoogleMap>
   ) : (
     <div className="spinner-border text-secondary" role="status">

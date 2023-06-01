@@ -29,7 +29,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps): JSX.Element {
     mode: 'onChange',
   });
 
-  const { cartProducts, shopId, setShopId, setCouponCode, couponCode } = useShop();
+  const { cartProducts, shopId, setShopId, setCouponCode, couponCode, setCartProducts } = useShop();
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [showCaptcha, setShowCaptcha] = useState<boolean>(false);
   const [captchaStatus, setCaptchaStatus] = useState<boolean>(false);
@@ -71,7 +71,7 @@ function UserForm({ isLoaded, handlePlaceSelect }: UserFormProps): JSX.Element {
     await mutateAsync(order);
     reset();
     setCouponCode('');
-    setTotalPrice(0);
+    setCartProducts([]);
     setValue('');
     setShopId(0);
     ProductService.removeAllProducts();
