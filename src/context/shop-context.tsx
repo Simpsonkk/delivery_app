@@ -27,7 +27,7 @@ const ShopContext = createContext<Context>({
 
 export const useShop = () => useContext(ShopContext);
 
-function ShopProvider({ children }: ShopProviderProps) {
+function ShopProvider({ children }: ShopProviderProps): JSX.Element {
   const [shopId, setShopId] = useState<number>(JSON.parse(localStorage.getItem('shopId') || '0'));
   const [cartProducts, setCartProducts] = useState<ProductCartItem[]>(ProductService.getProducts());
   const [couponCode, setCouponCode] = useState<string>('');

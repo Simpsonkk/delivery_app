@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { AppRoute } from '../enums';
 
-function Header() {
+function Header(): JSX.Element {
   const location = useLocation();
 
   return (

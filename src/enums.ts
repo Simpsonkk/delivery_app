@@ -18,8 +18,8 @@ export enum DiscountSizes {
 }
 
 export enum ShopIconsPath {
-  undefined = 0,
-  './burger-queen-icon.svg' = 1,
-  './pizza-mario.svg' = 2,
-  './awesome-sushi.svg' = 3,
+  'noIcon',
+  './burger-queen-icon.svg',
+  './pizza-mario.svg',
+  './awesome-sushi.svg',
 }

@@ -15,7 +15,7 @@ type ProductsProps = {
   shoppingCart?: boolean;
 };
 
-function Products({ shoppingCart }: ProductsProps) {
+function Products({ shoppingCart }: ProductsProps): JSX.Element {
   const { shopId, setCartProducts } = useShop();
   const [products, setProducts] = useState<Product[]>([]);
 

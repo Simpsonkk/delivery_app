@@ -6,7 +6,7 @@ import { useShop } from '../context/shop-context';
 import { ProductService } from '../services/product-service';
 import { ShopService } from '../services/shop-service';
 
-function Shops() {
+function Shops(): JSX.Element {
   const { setShopId } = useShop();
 
   const {

@@ -1,7 +1,7 @@
 import Coupons from '../components/coupons';
 import Header from '../components/header';
 
-function CouponsPage() {
+function CouponsPage(): JSX.Element {
   return (
     <>
       <Header />

@@ -26,7 +26,7 @@ function Autocomplete({
   suggestions: { data, status },
   value,
   handlePlaceSelect,
-}: AutocompleteProps) {
+}: AutocompleteProps): JSX.Element {
   const ref = useOnclickOutside(() => {
     clearSuggestions();
   });

@@ -3,7 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Discounts } from '../enums';
 
-function Coupons() {
+function Coupons(): JSX.Element {
   const [copiedCoupon, setCopiedCoupon] = useState<string>('');
   const handleCopyCoupon = (code: string) => setCopiedCoupon(code);
 

@@ -42,7 +42,18 @@ export const shopCoordinates: CoordinatesMap = {
   },
 };
 
+export const emptyOrder = {
+  shopId: 0,
+  productsIdsAndQuantity: [],
+  totalPrice: '',
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+};
+
 export const MAP_API_KEY = 'AIzaSyC8DSBubf3lvtRtevA1XLmqvALUVv4GYlE';
 
 export const libraries: ('places' | 'geometry')[] = ['places'];
 
+export const CAPTCHA_KEY = '6LekXFsmAAAAAB0Kli569wSHYJgPSzAgiVxmhvhH';

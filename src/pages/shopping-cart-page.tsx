@@ -9,7 +9,7 @@ import UserForm from '../components/user-form';
 import { defaultMapCoordinates, libraries, MAP_API_KEY } from '../constants';
 import { Coordinates } from '../types/coordinates.types';
 
-function ShoppingCartPage() {
+function ShoppingCartPage(): JSX.Element {
   const [coordinates, setCoordinates] = useState<Coordinates>(defaultMapCoordinates);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',

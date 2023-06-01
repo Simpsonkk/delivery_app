@@ -2,7 +2,7 @@ import Header from '../components/header';
 import Products from '../components/products';
 import Shops from '../components/shops';
 
-function ShopsPage() {
+function ShopsPage(): JSX.Element {
   return (
     <>
       <Header />

@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ShopService } from '../services/shop-service';
 import { ProductCartItem } from '../types/product-cart.types';
 
-function Orders() {
+function Orders(): JSX.Element {
   const [email, setEmail] = useState<string>('');
   const handleEmail = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
 

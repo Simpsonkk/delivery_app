@@ -12,7 +12,7 @@ type MapProps = {
   coordinates: Coordinates;
 };
 
-function Map({ isLoaded, coordinates }: MapProps) {
+function Map({ isLoaded, coordinates }: MapProps): JSX.Element {
   const { shopId } = useShop();
   const mapRef = useRef<google.maps.Map | null>(null);
 

@@ -17,7 +17,7 @@ function TotalPrice({
   cartProducts,
   couponCode,
   setCouponCode,
-}: TotalPriceProps) {
+}: TotalPriceProps): JSX.Element {
   const calculateTotalPrice = () =>
     cartProducts.reduce((acc, product) => acc + product.price * product.quantity, 0);
 
